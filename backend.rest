@@ -1,0 +1,35 @@
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+    "username": "johndoe",
+    "password": "123",
+    "email": "john@doefamily.com"
+}
+
+###
+
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    "username": "johndoe",
+    "password": "123"
+}
+
+###
+
+POST http://localhost:5000/reviews/ISBN/create
+Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MzMyNDgwNDcsImlhdCI6MTYzMzI0NjI0Nywic3ViIjoiMiJ9.I_jDdfxW6RIMlI0GU28uSDFikFwXBUPq9bgHPDSkX5c
+
+{
+    "text": "Text" 
+}
+
+###
+
+GET http://localhost:5000/reviews/ISBN/all
+
+###
+GET http://localhost:5000/search/1984
