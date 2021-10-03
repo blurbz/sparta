@@ -25,5 +25,6 @@ def search(title):
         try:
             books = get_books(title)
             return jsonify({"books": books})
-        except:
+        except Exception as e:
+            print(e)
             return jsonify({"message": "Failed"})
