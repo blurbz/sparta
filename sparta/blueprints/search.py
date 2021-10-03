@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request, current_app as app
 import requests
-import traceback
 
 search_bp = Blueprint("search", __name__)
 
@@ -15,8 +14,8 @@ def get_books(query):
             books = r.json()
 
             return books['items']
-    except:
-        traceback.print_exc()
+    except Exception as e:
+        print(e)
         return []
 
 

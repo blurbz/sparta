@@ -4,8 +4,6 @@ from sparta.models.review import Review
 
 from sparta.utils import decode_auth_token, is_logged_in
 
-import traceback
-
 reviews_bp = Blueprint("reviews", __name__)
 
 
@@ -23,8 +21,8 @@ def create(isbn):
             db.session.add(review)
             db.session.commit()
             return jsonify({"message": "Success."})
-        except:
-            traceback.print_exc()
+        except Exception as e:
+            print(e)
             return jsonify({"message": "Failed."})
 
 
@@ -34,6 +32,6 @@ def all(isbn):
         try:
             reviews = Review.query.filter_by(book_isbn=isbn).all()
             return jsonify({"reviews": [review.serialized for review in reviews]})
-        except:
-            traceback.print_exc()
+        except Exception as e:
+            print(e)
             return jsonify({"message": "Failed."})

@@ -2,7 +2,6 @@ from flask import current_app as app
 from datetime import datetime, timedelta
 from functools import wraps
 from flask import request, jsonify
-import traceback
 import jwt
 
 
@@ -31,8 +30,8 @@ def encode_auth_token(user_id):
                 app.config["FLASK_SECRET"],
                 algorithm="HS256"
             )
-    except:
-        traceback.print_exc()
+    except Exception as e:
+        print(e)
         return None
 
 

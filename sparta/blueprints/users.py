@@ -5,8 +5,6 @@ from argon2 import PasswordHasher
 
 from sparta.utils import encode_auth_token
 
-import traceback
-
 users_bp = Blueprint("users", __name__)
 hasher = PasswordHasher()
 
@@ -28,9 +26,8 @@ def register():
             db.session.commit()
 
             return jsonify({"message": "User created successfully"})
-        except:
-            traceback.print_exc()
-
+        except Exception as e:
+            print(e)
             return jsonify({"message": "Registration failed."})
     else:
         return "Method not allowed", 405
@@ -50,6 +47,6 @@ def login():
                 return jsonify({"token": str(token)})
             else:
                 return jsonify({"message": "Login failed."})
-        except:
-            traceback.print_exc()
+        except Exception as e:
+            print(e)
             return jsonify({"message": "Login failed."})

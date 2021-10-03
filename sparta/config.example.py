@@ -14,16 +14,16 @@ class Config(object):
 class DevConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SECRET_KEY = "DONT_SHARE_THIS"
-    GOOGLE_BOOKS_KEY = "DONT_SHARE_THIS_EITHER"
+    SECRET_KEY = ""
+    GOOGLE_BOOKS_KEY = ""
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + path.join(basedir, "app.db")
 
 
 class ProdConfig(Config):
     DEVELOPMENT = False
     DEBUG = False
-    SECRET_KEY = "DONT_SHARE_THIS"
-    GOOGLE_BOOKS_KEY = "DONT_SHARE_THIS_EITHER"
+    SECRET_KEY = ""
+    GOOGLE_BOOKS_KEY = ""
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + path.join(basedir, "app.db")
 
 
