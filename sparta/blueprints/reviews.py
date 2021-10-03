@@ -27,7 +27,7 @@ def create(isbn):
 
 
 @reviews_bp.route('/<isbn>/all', methods=['GET'])
-def all(isbn):
+def get_all(isbn):
     if request.method == "GET":
         try:
             reviews = Review.query.filter_by(book_isbn=isbn).all()
