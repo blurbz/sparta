@@ -1,3 +1,1 @@
-"""
-Backend package that contains blueprints, models, extensions, migrations
-"""
+"""Backend package that contains blueprints, models, extensions, migrations"""
