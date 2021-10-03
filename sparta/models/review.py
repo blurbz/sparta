@@ -1,4 +1,4 @@
-from extensions import db, migrate
+from sparta.extensions import db, migrate
 from datetime import datetime
 
 

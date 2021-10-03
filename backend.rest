@@ -21,7 +21,7 @@ Content-Type: application/json
 
 POST http://localhost:5000/reviews/ISBN/create
 Content-Type: application/json
-Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MzMyNDgwNDcsImlhdCI6MTYzMzI0NjI0Nywic3ViIjoiMiJ9.I_jDdfxW6RIMlI0GU28uSDFikFwXBUPq9bgHPDSkX5c
+Authorization: INSERT_TOKEN
 
 {
     "text": "Text" 

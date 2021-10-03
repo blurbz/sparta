@@ -1,9 +1,9 @@
 from flask import Blueprint, jsonify, request
-from extensions import db
-from models.user import User
+from sparta.extensions import db
+from sparta.models.user import User
 from argon2 import PasswordHasher
 
-from utils import encode_auth_token
+from sparta.utils import encode_auth_token
 
 import traceback
 
@@ -46,7 +46,7 @@ def login():
         try:
             user = User.query.filter_by(username=username).first()
             if hasher.verify(user.password, password):
-                token = encode_auth_token(user.id)
+                token = encode_auth_token(str(user.id))
                 return jsonify({"token": str(token)})
             else:
                 return jsonify({"message": "Login failed."})

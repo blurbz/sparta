@@ -1,3 +1,3 @@
 # sparta
 
-Blrubz server-side code.
+Blurbz server-side code.

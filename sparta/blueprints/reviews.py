@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request
-from extensions import db
-from models.review import Review
+from sparta.extensions import db
+from sparta.models.review import Review
 
-from utils import decode_auth_token, is_logged_in
+from sparta.utils import decode_auth_token, is_logged_in
 
 import traceback
 
