@@ -21,7 +21,6 @@ def is_logged_in(f):
 def encode_auth_token(user_id):
     try:
         with app.app_context():
-            print(app.config)
             payload = {
                 "exp": datetime.utcnow() + timedelta(minutes=30),
                 "iat": datetime.utcnow(),

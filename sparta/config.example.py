@@ -8,12 +8,14 @@ class Config(object):
     DEVELOPMENT = False
     SECRET_KEY = environ.get("SECRET_KEY")
     FLASK_SECRET = SECRET_KEY
+    GOOGLE_BOOKS_KEY = environ.get("GOOGLE_BOOKS_KEY")
 
 
 class DevConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
     SECRET_KEY = "DONT_SHARE_THIS"
+    GOOGLE_BOOKS_KEY = "DONT_SHARE_THIS_EITHER"
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + path.join(basedir, "app.db")
 
 
@@ -21,6 +23,7 @@ class ProdConfig(Config):
     DEVELOPMENT = False
     DEBUG = False
     SECRET_KEY = "DONT_SHARE_THIS"
+    GOOGLE_BOOKS_KEY = "DONT_SHARE_THIS_EITHER"
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + path.join(basedir, "app.db")
 
 

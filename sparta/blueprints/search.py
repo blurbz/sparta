@@ -1,21 +1,20 @@
-import trace
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, current_app as app
 import requests
 import traceback
 
 search_bp = Blueprint("search", __name__)
 
-KEY = "AIzaSyAgIrCcfsBrr_dxVHYUlPyGIrOc3pZlAeE"
-
 
 def get_books(query):
     try:
-        r = requests.get(
-            f"https://www.googleapis.com/books/v1/volumes?q={query}&key={KEY}")
+        with app.app_context():
+            KEY = app.config["GOOGLE_BOOKS_KEY"]
+            r = requests.get(
+                f"https://www.googleapis.com/books/v1/volumes?q={query}&key={KEY}")
 
-        books = r.json()
+            books = r.json()
 
-        return books['items']
+            return books['items']
     except:
         traceback.print_exc()
         return []
