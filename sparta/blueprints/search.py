@@ -19,6 +19,23 @@ def get_books(query):
         return []
 
 
+def get_book(id):
+    try:
+        with app.app_context():
+            KEY = app.config["GOOGLE_BOOKS_KEY"]
+            r = requests.get(
+                f"https://www.googleapis.com/books/v1/volumes/{id}?key={KEY}")
+
+            book = r.json()
+
+            print(book)
+
+            return book
+    except Exception as e:
+        print(e)
+        return []
+
+
 @search_bp.route('/<title>', methods=['GET'])
 def search(title):
     if request.method == "GET":
@@ -28,3 +45,14 @@ def search(title):
         except Exception as e:
             print(e)
             return jsonify({"message": "Failed"})
+
+
+@search_bp.route("/one/<id>", methods=["GET"])
+def find_one(id):
+    if request.method == "GET":
+        try:
+            book = get_book(id)
+            return jsonify({"book": book})
+        except Exception as e:
+            print(e)
+            return jsonify({"message": "Failed."})

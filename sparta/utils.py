@@ -21,7 +21,8 @@ def encode_auth_token(user_id):
     try:
         with app.app_context():
             payload = {
-                "exp": datetime.utcnow() + timedelta(minutes=30),
+                "exp": datetime.utcnow() +
+                timedelta(minutes=30),
                 "iat": datetime.utcnow(),
                 "sub": str(user_id),
             }
@@ -31,6 +32,7 @@ def encode_auth_token(user_id):
                 algorithm="HS256"
             )
     except Exception as e:
+        print(user_id, type(user_id))
         print(e)
         return None
 
@@ -40,7 +42,7 @@ def decode_auth_token(token):
         with app.app_context():
             payload = jwt.decode(
                 token, app.config["FLASK_SECRET"], algorithms=["HS256"])
-            return payload["sub"]
+            return payload["sub"], payload["exp"]
     except jwt.ExpiredSignatureError:
         return "Signature expired!"
     except jwt.InvalidTokenError as e:
