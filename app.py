@@ -1,3 +1,4 @@
+# Imports
 from flask import Flask, Blueprint
 from sparta.config import config_map
 from sparta.extensions import db, migrate, cors
@@ -6,7 +7,7 @@ from sparta.blueprints.users import users_bp
 from sparta.blueprints.search import search_bp
 from sparta.blueprints.reviews import reviews_bp
 
-
+# App factory
 def create_app():
     app = Flask(__name__)
     app.config.from_object(config_map.get(app.config["ENV"]))
@@ -22,7 +23,7 @@ def create_app():
 
     return app
 
-
+# Extension initialisation
 def register_extensions(app):
     db.init_app(app)
     migrate.init_app(app, db)
