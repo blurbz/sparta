@@ -1,10 +1,11 @@
+# Imports
 from flask import current_app as app
 from datetime import datetime, timedelta
 from functools import wraps
 from flask import request, jsonify
 import jwt
 
-
+# JWT checker function
 def is_logged_in(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -16,7 +17,7 @@ def is_logged_in(f):
             return jsonify({"error": "Not authorized!"})
     return wrap
 
-
+# generate JWT token
 def encode_auth_token(user_id):
     try:
         with app.app_context():
@@ -36,7 +37,7 @@ def encode_auth_token(user_id):
         print(e)
         return None
 
-
+# decode JWT token
 def decode_auth_token(token):
     try:
         with app.app_context():

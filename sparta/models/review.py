@@ -1,14 +1,16 @@
+# Imports
 from sparta.extensions import db
 from datetime import datetime
 
 
+# Review SQL representation
 class Review(db.Model):
     __tablename__ = "review"
 
-    id = db.Column(db.Integer, primary_key=True)
-    book_id = db.Column(db.String, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    text = db.Column(db.Text, nullable=False)
+    id = db.Column(db.Integer, primary_key=True) # e.g. 1
+    book_id = db.Column(db.String, nullable=False) # e.g. eWg4adZ
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # e.g. 4
+    text = db.Column(db.Text, nullable=False) # e.g This book very bad
     created_on = db.Column(db.DateTime, default=datetime.utcnow)
 
     @property
